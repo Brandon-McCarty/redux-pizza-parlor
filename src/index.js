@@ -32,7 +32,9 @@ const sumOrder = (state = 0, action) => {
 const customerInformation = (state = {}, action) => {
     switch (action.type) {
         case 'ADD_CUSTOMER_INFORMATION':
-            return action.payload
+            return action.payload;
+        case 'CLEAR_CUSTOMER_INFORMATION':
+            return {};
         default:
             return state
     }

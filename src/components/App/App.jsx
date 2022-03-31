@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // Component Imports
 import PizzaList from '../PizzaList/PizzaList';
 import CustomerForm from '../CustomerForm/CustomerForm';
+import CheckoutList from '../CheckoutList/CheckoutList';
 
 function App() {
 
@@ -41,7 +42,7 @@ function App() {
         sumOrder={sumOrder}
       />
       <CustomerForm />
-  
+      <CheckoutList />
     </div>
   );
 }
