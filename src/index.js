@@ -16,6 +16,19 @@ const pizzaList = ( state = [], action ) => {
     return state;
 }
 
+const sumOrder = ( state = 0, action ) => {
+    switch (action.type) {
+        case 'ADD_TO_COST':
+            return Number(state) + Number(action.payload);
+        case 'SUBTRACT_TO_COST':
+            return Number(state) - Number(action.payload);
+        case 'CLEAR_COST':
+            return 0;
+        default:
+            return state;
+    }
+}
+
 const customerInformation = (state = {}, action) => {
     switch(action.type) {
         case 'ADD_CUSTOMER_INFORMATION':
@@ -29,7 +42,8 @@ const customerInformation = (state = {}, action) => {
 const reduxStore = createStore(
     combineReducers({
       pizzaList,
-      customerInformation
+      sumOrder,
+      customerInformation,
     }),
     applyMiddleware(logger)
   );
