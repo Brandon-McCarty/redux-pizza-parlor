@@ -3,7 +3,7 @@
 shoppingCart []  
     pizza {id, quantity}
 
-customerInformation []
+customerInformation object
 {"customer_name": "Donatello",
   "street_address": "20 W 34th St",
   "city": "New York",
