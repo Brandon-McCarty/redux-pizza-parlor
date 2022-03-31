@@ -16,6 +16,19 @@ const pizzaList = (state = [], action) => {
     return state;
 };
 
+const sumOrder = (state = 0, action) => {
+    switch (action.type) {
+        case 'ADD_TO_COST':
+            return Number(state) + Number(action.payload);
+        case 'SUBTRACT_TO_COST':
+            return Number(state) - Number(action.payload);
+        case 'CLEAR_COST':
+            return 0;
+        default:
+            return state;
+    }
+}
+
 const customerInformation = (state = {}, action) => {
     switch (action.type) {
         case 'ADD_CUSTOMER_INFORMATION':
@@ -31,7 +44,7 @@ const shoppingCart = (state = [], action) => {
             return [...state, action.payload]
         case 'DELETE_FROM_CART':
             console.log(action.payload.id);
-            
+
             return state.filter((pizzaItem) => pizzaItem.id !== action.payload.id)
         case 'CLEAR_CART':
             return [];
@@ -44,7 +57,9 @@ const reduxStore = createStore(
     combineReducers({
         pizzaList,
         customerInformation,
-        shoppingCart
+        shoppingCart,
+        sumOrder
+
     }),
     applyMiddleware(logger)
 );
