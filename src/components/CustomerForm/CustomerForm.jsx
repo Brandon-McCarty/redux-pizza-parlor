@@ -10,7 +10,14 @@ function CustomerForm({ getPizzas }) {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
-    const [orderType, setOrderType] = useState('Delivery'); // Need to grab from radio input
+    const [orderType, setOrderType] = useState(''); // Need to grab from radio input
+
+    const handleChange = (event) => {
+        const target = event.target;
+        if (target.checked) {
+          setOrderType(target.value);
+        }
+     };
 
 
     const handleSubmit = (event) => {
@@ -71,6 +78,8 @@ function CustomerForm({ getPizzas }) {
                 name ="chooseDelivery" 
                 id="pickup" 
                 value="Pickup" 
+                checked={orderType == 'Pickup'} 
+                onChange={handleChange}
                 />
                 <label htmlFor="pickup">Pickup</label>
 
@@ -78,7 +87,8 @@ function CustomerForm({ getPizzas }) {
                 name ="chooseDelivery" 
                 id="delivery" 
                 value="Delivery" 
-                
+                checked={orderType == 'Delivery'} 
+                onChange={handleChange}
                 />
                 <label htmlFor="pickup">Delivery</label>
                 <br />
