@@ -6,17 +6,7 @@ import axios from 'axios';
 function PizzaItem({ getPizzas, pizzaItem }) {
 
     const deletePizza = () => {
-        axios({
-          method: 'DELETE',
-          url: `/api/order/${pizzaItem.id}`
-        })
-          .then((response) => { 
-            getPizzas() 
-          })
-          .catch((error) => {
-            console.log('error on delete: ', error)
-          })
-      };
+
 
     const dispatch = useDispatch();
 
