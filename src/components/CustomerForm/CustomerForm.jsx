@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import {useDispatch} from 'react-redux'
 
 
 function CustomerForm({ getPizzas }) {
+
+    const dispatch = useDispatch();
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -13,6 +16,16 @@ function CustomerForm({ getPizzas }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(name, address, city, zip, orderType);
+
+        dispatch({type: 'ADD_CUSTOMER_INFORMATION', payload: {
+            customer_name: name,
+            street_address: address,
+            city: city,
+            zip: zip,
+            total: "27.98",
+            type: orderType
+        }})
+
         setName('');
         setAddress('');
         setCity('');
@@ -58,7 +71,6 @@ function CustomerForm({ getPizzas }) {
                 name ="chooseDelivery" 
                 id="pickup" 
                 value="Pickup" 
-                onChange={handleChange}
                 />
                 <label htmlFor="pickup">Pickup</label>
 
