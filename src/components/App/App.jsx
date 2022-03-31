@@ -13,7 +13,6 @@ function App() {
   const dispatch = useDispatch();
 
   const getPizzas = () => {
-
     axios.get('/api/pizza')
     .then(response => {
       console.log(response.data);
@@ -21,6 +20,10 @@ function App() {
     }).catch(err => {
       console.log('Error in getting pizzas', err);
     })
+  }
+
+  const sumOrder = () => {
+    dispatch({ type: 'ADD_ITEM_SUM'})
   }
 
   useEffect(() => {
@@ -31,7 +34,9 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <PizzaList />
+      <PizzaList 
+        sumOrder={sumOrder}
+      />
   
     </div>
   );

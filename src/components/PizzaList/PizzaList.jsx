@@ -1,7 +1,7 @@
 import PizzaItem from '../PizzaItem/PizzaItem';
 import { useSelector } from 'react-redux';
 
-function PizzaList () {
+function PizzaList ({sumTotal}) {
     const pizzaList = useSelector( store => store.pizzaList)
 
     return (

@@ -16,9 +16,23 @@ const pizzaList = ( state = [], action ) => {
     return state;
 }
 
+const sumOrder = ( state = 0, action ) => {
+    switch (action.type) {
+        case 'ADD_ITEM_SUM':
+            return state + action.payload;
+        case 'REMOVE_ITEM_SUM':
+            return state - action.payload;
+        case 'CLEAR_ITEM_SUM':
+            return 0;
+        default:
+            return state;
+    }
+}
+
 const reduxStore = createStore(
     combineReducers({
-      pizzaList
+      pizzaList,
+      sumOrder
     }),
     applyMiddleware(logger)
   );
