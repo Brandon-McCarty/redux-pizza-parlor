@@ -22,7 +22,7 @@ function PizzaItem({ getPizzas, pizzaItem }) {
 
     const deletePizza = () => {
 
-
+        setButtonOption(!buttonOption)
     }
 
     const addPizzaToCart = () => {
