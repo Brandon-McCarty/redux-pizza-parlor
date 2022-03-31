@@ -16,16 +16,27 @@ const pizzaList = ( state = [], action ) => {
     return state;
 }
 
+const customerInformation = (state = {}, action) => {
+    switch(action.type) {
+        case 'ADD_CUSTOMER_INFORMATION':
+            return action.payload
+        default:
+            return state
+    }
+
+}
+
 const reduxStore = createStore(
     combineReducers({
-      pizzaList
+      pizzaList,
+      customerInformation
     }),
     applyMiddleware(logger)
   );
 
 ReactDOM.render(
     <Provider store={reduxStore}>
-            <App />, 
+            <App /> 
     </Provider>,
     document.getElementById('root')
 );
