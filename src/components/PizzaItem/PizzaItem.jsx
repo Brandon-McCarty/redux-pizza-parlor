@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import {useState} from 'react';
+import { useState } from 'react';
 
 // Displays a single Product with price on the DOM
 function PizzaItem({ getPizzas, pizzaItem }) {
@@ -16,17 +16,21 @@ function PizzaItem({ getPizzas, pizzaItem }) {
 
     const toggleAddRemove = () => {
 
-      
+
     }
 
     console.log(buttonOption);
 
     const deletePizza = () => {
+        // dispatch({type: 'DELETE_FROM_COST', payload: pizzaItem.price})
+        dispatch({ type: 'DELETE_FROM_CART', payload: pizzaItem })
+        setButtonOption(!buttonOption)
         dispatch({type: 'SUBTRACT_TO_COST', payload: pizzaItem.price});
-        setButtonOption(!buttonOption);
     }
 
     const addPizzaToCart = () => {
+        dispatch({ type: 'ADD_TO_CART', payload: { id:pizzaItem.id, name: pizzaItem.name, description: pizzaItem.description, price: pizzaItem.price, image: pizzaItem.image } })
+        dispatch({ type: 'ADD_TO_COST', payload: pizzaItem.price })
         console.log(pizzaItem);
         dispatch({type: 'ADD_TO_COST', payload: pizzaItem.price});
         setButtonOption(!buttonOption);
@@ -34,10 +38,10 @@ function PizzaItem({ getPizzas, pizzaItem }) {
 
     return (
         <>
-        <li>
-            {pizzaItem.name}: {pizzaItem.price}
-            {buttonOption ? <button onClick={addPizzaToCart}>Add</button> : <button onClick={deletePizza}>Delete</button>}
-        </li>
+            <li>
+                {pizzaItem.name}: {pizzaItem.price}
+                {buttonOption ? <button onClick={addPizzaToCart}>Add</button> : <button onClick={deletePizza}>Delete</button>}
+            </li>
         </>
     );
 }
