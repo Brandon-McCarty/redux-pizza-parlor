@@ -6,7 +6,7 @@ function CheckoutList() {
     const dispatch = useDispatch();
 
     const customer = useSelector(store => store.customerInformation)
-    // const shoppingCart = useSelector(store => store.shoppingCart)
+    const shoppingCart = useSelector(store => store.shoppingCart)
 
 
     const handleCheckout = () => {

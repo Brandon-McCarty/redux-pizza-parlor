@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Header from '../Header/Header';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Component Imports
 import PizzaList from '../PizzaList/PizzaList';
@@ -12,10 +12,11 @@ import CheckoutList from '../CheckoutList/CheckoutList';
 
 function App() {
 
+  const runningTotal = useSelector( store => store.sumOrder )
+
   const dispatch = useDispatch();
 
   const getPizzas = () => {
-
     axios.get('/api/pizza')
     .then(response => {
       console.log(response.data);
@@ -23,6 +24,10 @@ function App() {
     }).catch(err => {
       console.log('Error in getting pizzas', err);
     })
+  }
+
+  const sumOrder = () => {
+    dispatch({ type: 'ADD_ITEM_SUM'})
   }
 
   useEffect(() => {
@@ -33,7 +38,9 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <PizzaList />
+      <PizzaList 
+        sumOrder={sumOrder}
+      />
       <CustomerForm />
       <CheckoutList />
     </div>
