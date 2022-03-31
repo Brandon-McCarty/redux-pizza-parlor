@@ -1,4 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
+import axios from 'axios';
 
 function CheckoutList() {
 
@@ -9,14 +10,34 @@ function CheckoutList() {
 
 
     const handleCheckout = () => {
+        axios.post('/api/order', {
+            customer_name: "Donatello",
+            street_address: "20 W 34th St",
+            city: "New York",
+            zip: "10001",
+            total: "27.98",
+            type: "Pickup",
+            pizzas: [{
+              id: "1",
+              quantity: "1"
+            },{
+              id: "2",
+              quantity: "1"
+            }]
+          })
+        .then(response => {
+            console.log('Order Submitted')
+        }).catch(err => {
+            console.log(err);
+        })
         dispatch({type: 'CLEAR_CUSTOMER_INFORMATION'})
     }
 
     return (
         <>
-            <h1>Step 3: Checkout</h1>
+            <h2>Step 3: Checkout</h2>
             <div>
-                <p>{customer.customer_name} </p>
+                <p>{customer.customer_name} </p><p>{customer.type}</p>
                 <p>{customer.street_address}</p>
                 <p>{customer.city}, MN</p>
 
@@ -35,7 +56,7 @@ function CheckoutList() {
 
                 </tbody>
             </table>
-
+            <h1>Total: </h1>
             <button onClick={handleCheckout}>Checkout</button>
         </>
     )
