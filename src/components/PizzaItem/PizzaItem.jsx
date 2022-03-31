@@ -11,7 +11,8 @@ function PizzaItem({ getPizzas, pizzaItem }) {
     const dispatch = useDispatch();
 
 // dispatch({type: 'ADD_TO_CART', payload: {name: pizzaItem.name, description: pizzaItem.description, price: pizzaItem.price, image: pizzaItem.image}})
-// dispatch({type: 'ADD_TO_COST', payload: product.price})
+    
+    
 
     const toggleAddRemove = () => {
 
@@ -21,14 +22,14 @@ function PizzaItem({ getPizzas, pizzaItem }) {
     console.log(buttonOption);
 
     const deletePizza = () => {
-
-        setButtonOption(!buttonOption)
+        dispatch({type: 'SUBTRACT_TO_COST', payload: pizzaItem.price});
+        setButtonOption(!buttonOption);
     }
 
     const addPizzaToCart = () => {
         console.log(pizzaItem);
-
-        setButtonOption(!buttonOption)
+        dispatch({type: 'ADD_TO_COST', payload: pizzaItem.price});
+        setButtonOption(!buttonOption);
     }
 
     return (

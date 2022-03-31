@@ -18,11 +18,11 @@ const pizzaList = ( state = [], action ) => {
 
 const sumOrder = ( state = 0, action ) => {
     switch (action.type) {
-        case 'ADD_ITEM_SUM':
-            return state + action.payload;
-        case 'REMOVE_ITEM_SUM':
-            return state - action.payload;
-        case 'CLEAR_ITEM_SUM':
+        case 'ADD_TO_COST':
+            return Number(state) + Number(action.payload);
+        case 'SUBTRACT_TO_COST':
+            return Number(state) - Number(action.payload);
+        case 'CLEAR_COST':
             return 0;
         default:
             return state;

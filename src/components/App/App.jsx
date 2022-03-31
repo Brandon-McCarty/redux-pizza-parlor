@@ -3,13 +3,15 @@ import axios from 'axios';
 import './App.css';
 import Header from '../Header/Header';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Component Imports
 import PizzaList from '../PizzaList/PizzaList';
 import CustomerForm from '../CustomerForm/CustomerForm';
 
 function App() {
+
+  const runningTotal = useSelector( store => store.sumOrder )
 
   const dispatch = useDispatch();
 
