@@ -1,4 +1,4 @@
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 function CheckoutList() {
@@ -18,19 +18,20 @@ function CheckoutList() {
             total: "27.98",
             type: "Pickup",
             pizzas: [{
-              id: "1",
-              quantity: "1"
-            },{
-              id: "2",
-              quantity: "1"
+                id: "1",
+                quantity: "1"
+            }, {
+                id: "2",
+                quantity: "1"
             }]
-          })
-        .then(response => {
-            console.log('Order Submitted')
-        }).catch(err => {
-            console.log(err);
         })
-        dispatch({type: 'CLEAR_CUSTOMER_INFORMATION'})
+            .then(response => {
+                console.log('Order Submitted')
+            }).catch(err => {
+                console.log(err);
+            })
+        dispatch({ type: 'CLEAR_CUSTOMER_INFORMATION' })
+        dispatch({ type: 'CLEAR_CART' })
     }
 
     return (
@@ -53,7 +54,9 @@ function CheckoutList() {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {shoppingCart.map((product, i) => {
+                        return <CheckoutItem key={i} product={product} />;
+                    })}
                 </tbody>
             </table>
             <h1>Total: </h1>
