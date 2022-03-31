@@ -5,8 +5,9 @@ import Header from '../Header/Header';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-// REDUX Imports
+// Component Imports
 import PizzaList from '../PizzaList/PizzaList';
+import CustomerForm from '../CustomerForm/CustomerForm';
 
 function App() {
 
