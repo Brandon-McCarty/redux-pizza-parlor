@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 // Displays a single Product with price on the DOM
-function PizzaItem({ getPizzas, pizza }) {
+function PizzaItem({ getPizzas, pizzaItem }) {
 
     const deletePizza = () => {
         axios({
           method: 'DELETE',
-          url: `/api/order/${pizza.id}`
+          url: `/api/order/${pizzaItem.id}`
         })
           .then((response) => { 
             getPizzas() 
@@ -21,15 +21,15 @@ function PizzaItem({ getPizzas, pizza }) {
     const dispatch = useDispatch();
 
     const addPizzaToCart = () => {
-        console.log(pizza);
+        console.log(pizzaItem);
     
-    dispatch({type: 'ADD_TO_CART', payload: {name: pizza.name, description: pizza.description, price: product.price, image: pizza.image}})
-    dispatch({type: 'ADD_TO_COST', payload: product.price})
+    // dispatch({type: 'ADD_TO_CART', payload: {name: pizzaItem.name, description: pizzaItem.description, price: pizzaItem.price, image: pizzaItem.image}})
+    // dispatch({type: 'ADD_TO_COST', payload: product.price})
     }
 
     return (
         <li>
-            {pizza.name}: {pizza.price}
+            {pizzaItem.name}: {pizzaItem.price}
             <button onClick={addPizzaToCart}>Add</button>
             <button onClick={deletePizza}>Delete</button>
         </li>
