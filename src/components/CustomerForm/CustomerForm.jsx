@@ -38,6 +38,12 @@ function CustomerForm({ getPizzas }) {
                 onChange={(event) => setZip(event.target.value)}
             />
             <br />
+            
+            <input type="radio" id="pickup" value="Pickup"/>
+            <label htmlFor="pickup">Pickup</label>
+            
+            <input type="radio" id="delivery" value="Delivery"/>
+            <label htmlFor="pickup">Delivery</label>
             <button>
                 Next
             </button>
