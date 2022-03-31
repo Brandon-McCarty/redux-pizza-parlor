@@ -38,6 +38,7 @@ function App() {
       <PizzaList 
         sumOrder={sumOrder}
       />
+      <CustomerForm />
   
     </div>
   );
