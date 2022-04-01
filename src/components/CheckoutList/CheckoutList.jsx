@@ -1,9 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+<<<<<<< HEAD
+import {useHistory} from 'react-router-dom';
+=======
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
+>>>>>>> main
 
 function CheckoutList() {
 
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const customer = useSelector(store => store.customerInformation)
@@ -39,6 +44,7 @@ function CheckoutList() {
             })
         dispatch({ type: 'CLEAR_CUSTOMER_INFORMATION' })
         dispatch({ type: 'CLEAR_CART' })
+        history.push('/');
         dispatch({ type: 'CLEAR_COST' })
     }
 

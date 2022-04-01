@@ -4,6 +4,7 @@ import './App.css';
 import Header from '../Header/Header';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
 // Component Imports
 import PizzaList from '../PizzaList/PizzaList';
@@ -36,14 +37,24 @@ function App() {
   }, []);
 
   return (
+    <Router>
     <div className='App'>
+      <Route path="/">
       <Header />
+      <Route path="/" exact>
       <PizzaList 
-        sumOrder={sumOrder}
+        sumOrder={sumOrder}   
       />
+      </Route>
+      </Route>
+      <Route path="/customerForm">
       <CustomerForm />
+      </Route>
+      <Route path="/checkoutList">
       <CheckoutList />
+      </Route>
     </div>
+    </Router>
   );
 }
 
