@@ -5,7 +5,7 @@ function PizzaList ({sumTotal}) {
     const pizzaList = useSelector( store => store.pizzaList)
 
     return (
-        <div>
+        <div className="grid-container">
             {pizzaList.map(pizzaItem => (
                 <PizzaItem 
                 key={pizzaItem.id}

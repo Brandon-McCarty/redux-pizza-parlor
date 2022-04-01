@@ -38,9 +38,9 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <PizzaList 
-        sumOrder={sumOrder}
-      />
+        <PizzaList 
+          sumOrder={sumOrder}
+        />
       <CustomerForm />
       <CheckoutList />
     </div>
