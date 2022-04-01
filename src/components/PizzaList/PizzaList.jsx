@@ -12,7 +12,7 @@ function PizzaList ({sumTotal}) {
     };
 
     return (
-        <div>
+        <div className="grid-container">
             {pizzaList.map(pizzaItem => (
                 <PizzaItem 
                 key={pizzaItem.id}

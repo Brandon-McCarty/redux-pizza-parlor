@@ -1,10 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-<<<<<<< HEAD
 import {useHistory} from 'react-router-dom';
-=======
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
->>>>>>> main
 
 function CheckoutList() {
 
