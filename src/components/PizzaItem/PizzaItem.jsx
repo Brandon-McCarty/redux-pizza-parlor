@@ -37,12 +37,14 @@ function PizzaItem({ getPizzas, pizzaItem }) {
     }
 
     return (
-        <>
-            <p className="descContainer" img src="./images/pizza_photo.png">
+        <div>
+            <img src={pizzaItem.image_path}/>
+            <p className="descContainer" >
+                
                 {pizzaItem.name}: {pizzaItem.price}
                 {buttonOption ? <button onClick={addPizzaToCart}>Add</button> : <button onClick={deletePizza}>Delete</button>}
             </p>
-        </>
+        </div>
     );
 }
 
