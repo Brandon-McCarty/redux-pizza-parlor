@@ -8,23 +8,29 @@ function CheckoutList() {
 
     const customer = useSelector(store => store.customerInformation)
     const shoppingCart = useSelector(store => store.shoppingCart)
+    const totalCost = useSelector(store => store.sumOrder)
 
+    const pizzaOrder = () => {
+        let pizzaList = [];
+        for (let pizza of shoppingCart) {
+            pizzaList.push({id: pizza.id, quantity: 1})
+        }
+        return pizzaList;
+    }
+
+    let pizzas = pizzaOrder(shoppingCart)
+    console.log(pizzas);
 
     const handleCheckout = () => {
+        console.log('TEST', shoppingCart);
         axios.post('/api/order', {
-            customer_name: "Donatello",
-            street_address: "20 W 34th St",
-            city: "New York",
-            zip: "10001",
-            total: "27.98",
-            type: "Pickup",
-            pizzas: [{
-                id: "1",
-                quantity: "1"
-            }, {
-                id: "2",
-                quantity: "1"
-            }]
+            customer_name: customer.customer_name,
+            street_address: customer.street_address,
+            city: customer.city,
+            zip: customer.zip,
+            total: totalCost,
+            type: customer.type,
+            pizzas: pizzas
         })
             .then(response => {
                 console.log('Order Submitted')
@@ -33,6 +39,7 @@ function CheckoutList() {
             })
         dispatch({ type: 'CLEAR_CUSTOMER_INFORMATION' })
         dispatch({ type: 'CLEAR_CART' })
+        dispatch({ type: 'CLEAR_COST' })
     }
 
     return (
