@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import {useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 
 
 function CustomerForm({ getPizzas }) {
+
+    const history = useHistory();
 
     const dispatch = useDispatch();
 
@@ -23,6 +26,7 @@ function CustomerForm({ getPizzas }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(name, address, city, zip, orderType);
+        history.push('/checkoutList');
 
         dispatch({type: 'ADD_CUSTOMER_INFORMATION', payload: {
             customer_name: name,
