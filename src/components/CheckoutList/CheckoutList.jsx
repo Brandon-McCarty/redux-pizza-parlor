@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import CheckoutItem from '../CheckoutItem/CheckoutItem';
 
 function CheckoutList() {
 
@@ -54,8 +55,8 @@ function CheckoutList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {shoppingCart.map((product, i) => {
-                        return <CheckoutItem key={i} product={product} />;
+                    {shoppingCart.map((product) => {
+                        return (<CheckoutItem key={product.id} product={product} />);
                     })}
                 </tbody>
             </table>
